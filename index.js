@@ -3,7 +3,7 @@ const app = express()
 const port = 3333
 const cors = require('cors')
 const bodyParser = require('body-parser')
-const people = require('./people')
+const data = require('./people')
 const error = require('./error')
 
 
@@ -14,14 +14,15 @@ app.use(cors())
 
 
 app.get('/', (req, res, next) => {
-    res.json({people})
+    res.json({data})
 })
-people.map((person, i) => {
-    return app.get(`/${person.id}`, (req, res, next) => {
-        res.json(people[i])
-    })
+
+app.get('/:index', (req, res, next) => {
+    if (req.params.index <= data.length){
+        res.send(data[req.params.index - 1])
+    } else {
+        res.status(404)
+        res.send(error[0])    
+    }
 })
-app.get('/*', (req, res, next) => {
-    res.json(error[0])
-})
-app.listen(port, () => console.log(`I got you on ${port}`))
+app.listen(port, () => console.log(`I got you on http://localhost:${port}`))
