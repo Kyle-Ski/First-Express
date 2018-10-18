@@ -22,7 +22,7 @@ app.get('/:index', (req, res, next) => {
         res.send(data[req.params.index - 1])
     } else {
         res.status(404)
-        res.send(error[0])    
+        res.redirect("https://http.cat/404")    
     }
 })
 app.listen(port, () => console.log(`I got you on http://localhost:${port}`))
