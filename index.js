@@ -12,6 +12,7 @@ app.use(bodyParser.json())
 app.use(cors())
 
 
+
 app.get('/', (req, res, next) => {
     res.json({people})
 })
@@ -20,7 +21,7 @@ people.map((person, i) => {
         res.json(people[i])
     })
 })
-app.get('/*', (err, req, res, next) => {
-    res.json({error})
+app.get('/*', (req, res, next) => {
+    res.json(error[0])
 })
 app.listen(port, () => console.log(`I got you on ${port}`))

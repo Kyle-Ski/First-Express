@@ -1,5 +1,6 @@
-module.exports = [
-    {
-        error: 'what the hell?'
+module.exports = [{
+    error: {
+        "message": "Wha.. What are you looking for?"
     }
+}
 ]
